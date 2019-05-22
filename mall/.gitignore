@@ -12,7 +12,7 @@ HELP.md
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -29,4 +29,4 @@ HELP.md
 .vscode/
 
 ### 把datasource配置移动到application.yaml文件中，并添加到忽略 ###
-/src/main/resources/application.yaml
+application.yaml

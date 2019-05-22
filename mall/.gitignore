@@ -29,4 +29,4 @@ HELP.md
 .vscode/
 
 ### 把datasource配置移动到application.yaml文件中，并添加到忽略 ###
-application.yaml
+/src/main/resources/application.yaml

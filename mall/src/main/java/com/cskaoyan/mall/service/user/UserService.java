@@ -12,5 +12,5 @@ import org.springframework.stereotype.Service;
  */
 public interface UserService {
 
-    CommonResult getList(Integer page, Integer limit, String sort, String order);
+    CommonResult getList(Integer page, Integer limit, String sort, String order, String username, String mobile);
 }

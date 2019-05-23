@@ -30,7 +30,8 @@
         select
         <include refid="BaseColumnList"/>
         from cskaoyan_mall_user
-        order by #{orderby} #{order}
+        where username like concat ("%", #{username}, "%") and mobile like concat ("%", #{mobile}, "%")
+        order by #{sort} #{order}
     </select>
 
 </mapper>

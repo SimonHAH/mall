@@ -23,10 +23,17 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
     @Override
-    public CommonResult getList(Integer page, Integer limit, String sort, String order) {
+    public CommonResult getList(Integer page, Integer limit, String sort, String order, String username, String mobile) {
         PageHelper.startPage(page, limit);
 
-        List<User> list = userMapper.getList(sort, order);
+        if (username == null) {
+            username = "";
+        }
+        if (mobile == null) {
+            mobile = "";
+        }
+
+        List<User> list = userMapper.getList(sort, order, username, mobile);
 
         // 取记录总条数
         PageInfo<User> pageInfo = new PageInfo<>();

@@ -2,7 +2,6 @@ package com.cskaoyan.mall.mapper.user;
 
 import com.cskaoyan.mall.bean.user.User;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -13,5 +12,5 @@ import java.util.List;
  */
 @Mapper
 public interface UserMapper {
-    List<User> getList(@Param("orderby") String sort, @Param("order") String order);
+    List<User> getList(String sort, String order, String username, String mobile);
 }

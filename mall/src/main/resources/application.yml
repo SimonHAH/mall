@@ -2,4 +2,3 @@ server:
   port: 80
   servlet:
     context-path: /admin
-

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cskaoyan.mall.mapper.promotion.AdvertMapper">
+    <resultMap id="BaseResultMap" type="com.cskaoyan.mall.bean.promotion.Advert">
+        <id column="id" property="id" />
+        <result column="name" property="name"/>
+        <result column="link" property="link"/>
+        <result column="url" property="url"/>
+        <result column="position" property="position"/>
+        <result column="content" property="content"/>
+        <result column="enabled" property="enabled"/>
+        <result column="add_time" property="addTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, name, link, url, position, content, enabled, add_time,
+        update_time, deleted
+    </sql>
+
+    <select id="find" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from cskaoyan_mall_ad order by #{sort} #{order}
+    </select>
+</mapper>

@@ -2,3 +2,9 @@ server:
   port: 80
   servlet:
     context-path: /admin
+
+#将mybatis集成到spring
+#bean文件和mapper扫描
+mybatis:
+  type-aliases-package: com.cskaoyan.mall.bean
+  mapper-locations: classpath:mapper/*Mapper.xml

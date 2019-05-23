@@ -1,9 +1,11 @@
 package com.cskaoyan.mall.bean.common;
 
+import com.cskaoyan.mall.bean.system.Log;
+
 import java.util.List;
 
 
-public class CommonData<T> {
+public class CommonData<T>  {
     List<T> items;
     long total;
 

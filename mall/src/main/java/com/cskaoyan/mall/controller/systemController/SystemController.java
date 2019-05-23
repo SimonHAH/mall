@@ -1,11 +1,17 @@
 package com.cskaoyan.mall.controller.systemController;
 
-import com.cskaoyan.mall.bean.system.Options;
-import com.cskaoyan.mall.service.systemService.OptionsService;
+import com.cskaoyan.mall.bean.common.CommonResult;
+import com.cskaoyan.mall.bean.system.AdminRole;
+import com.cskaoyan.mall.service.systemService.AdminLogService;
+import com.cskaoyan.mall.utils.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * Created by HorseXInsect
@@ -14,19 +20,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class SystemController {
 
-    @RequestMapping("/role")
-    @ResponseBody
-    public Options options() {
-        return new Options();
-    }
 
     @Autowired
-    OptionsService optionsService;
+    AdminLogService adminLogService;
 
-    @RequestMapping("/query")
+    /*@GetMapping("/admin/list")
+    public Object list(int page, int limit, String sort, String order) {
+        List<AdminRole> adminList = adminLogService.querySelect(page, limit, sort, order);
+
+
+        return ResponseUtil.okList(adminList);
+    }*/
+
+    @RequestMapping("/log/list")
     @ResponseBody
-    public Options queryCount() {
-        Options options = optionsService.queryCount();
-        return options;
+    public CommonResult getList(@RequestParam(defaultValue = "1") Integer page,
+                                @RequestParam(defaultValue = "10") Integer limit, String sort, String order) {
+        CommonResult commonResult = adminLogService.getList(page, limit, sort, order);
+        return commonResult;
     }
+
+
 }

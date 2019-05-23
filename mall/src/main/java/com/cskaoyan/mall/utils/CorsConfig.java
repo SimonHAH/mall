@@ -11,7 +11,6 @@ import org.springframework.web.filter.CorsFilter;
  * Date 2019/4/19 Time 10:44
  * Function:ajax跨域请求配置
  */
-@Configuration
 public class CorsConfig {
     private CorsConfiguration buildConfig() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();

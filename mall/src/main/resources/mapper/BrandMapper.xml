@@ -26,7 +26,7 @@
         SELECT *FROM cskaoyan_mall_brand
         <where>
             <if test="name!=null">
-                name like %"${name}"%
+                name like "%${name}%"
             </if>
             <if test="id!=null">
                 and id = #{id}

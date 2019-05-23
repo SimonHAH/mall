@@ -20,10 +20,9 @@ public class BrandController {
     @ResponseBody
     public ReturnBrandData list(String name,String id){
 
-        if ("".equals(name) || "".equals(id)){
-            name = null;
-            id = null;
-        }
+        name = "".equals(name) ? null : name;
+        id = "".equals(id) ? null : id;
+
         ReturnBrandData returnBrandData = new ReturnBrandData();
         BrandData brandData = new BrandData();
         if (name == null && id == null )

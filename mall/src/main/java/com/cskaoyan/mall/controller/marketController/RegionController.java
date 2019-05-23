@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-public class MarketController {
+public class RegionController {
 
     @Autowired
     private RegionService regionService;

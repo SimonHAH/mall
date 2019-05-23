@@ -1,9 +1,9 @@
 package com.cskaoyan.mall.controller.marketController;
 
 
-import com.cskaoyan.mall.bean.market.Region;
+import com.cskaoyan.mall.bean.market.ReturnRegionData;
 import com.cskaoyan.mall.bean.market.RegionData;
-import com.cskaoyan.mall.mapper.marketMapper.RegionMapper;
+import com.cskaoyan.mall.service.marketService.RegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,13 +15,13 @@ import java.util.List;
 public class MarketController {
 
     @Autowired
-    private RegionMapper regionMapper;
+    private RegionService regionService;
 
     @GetMapping(value = "/region/list")
     @ResponseBody
-    public Region list(){
-        List<RegionData> regionDataList = regionMapper.selectProvince();
-        Region region = new Region();
+    public ReturnRegionData list(){
+        List<RegionData> regionDataList = regionService.selectProvince();
+        ReturnRegionData region = new ReturnRegionData();
         region.setData(regionDataList.stream().toArray(RegionData[]::new));
 
         region.setErrmsg("成功");

@@ -2,7 +2,10 @@ package com.cskaoyan.mall.bean.common;
 
 import java.util.List;
 
-
+/**
+ * 分页结果
+ * @param <T>
+ */
 public class CommonData<T> {
     List<T> items;
     long total;

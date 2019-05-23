@@ -1,11 +1,14 @@
 package com.cskaoyan.mall.bean.system;
 
+import lombok.Data;
+
 import java.util.Date;
 
 /**
  * Created by HorseXInsect
  * 2019/5/23 16:51
  */
+@Data
 public class Log {
 
     Integer id;
@@ -19,4 +22,5 @@ public class Log {
     Boolean status;
     Integer type;
     Date updateTime;
+
 }

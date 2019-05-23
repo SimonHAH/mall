@@ -4,7 +4,6 @@ import com.cskaoyan.mall.bean.common.CommonData;
 import com.cskaoyan.mall.bean.common.CommonResult;
 import com.cskaoyan.mall.bean.system.Log;
 import com.cskaoyan.mall.mapper.systemMapper.AdminLogMapper;
-import com.cskaoyan.mall.mapper.systemMapper.AdminRoleMapper;
 import com.cskaoyan.mall.service.systemService.AdminLogService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -24,10 +23,17 @@ public class AdminLogServiceImpl implements AdminLogService {
     AdminLogMapper adminLogMapper;
 
     @Override
-    public CommonResult getList(Integer page, Integer limit, String sort, String order) {
+    public CommonResult getList(String name, Integer page, Integer limit, String sort, String order) {
         // 分页
         PageHelper.startPage(page, limit);
-        List<Log> list =adminLogMapper.find();
+
+        // 判断name是否为null，如果是null的话，替换成空串，因为直接传一个null进去的话，
+        // sql模糊查询时中间就会出现一个"null"
+        if (null == name) {
+            name = "";
+        }
+
+        List<Log> list =adminLogMapper.find(name, sort, order);
 
         CommonResult commonResult = new CommonResult();
         CommonData<Log> commonData = new CommonData<>();

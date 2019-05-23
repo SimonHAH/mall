@@ -13,6 +13,7 @@ import java.util.List;
 public interface AdminLogService {
 
 
-    CommonResult getList(Integer page, Integer limit, String sort, String order);
+    CommonResult getList(String name, Integer page, Integer limit, String sort, String order);
+
 
 }

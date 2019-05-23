@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cskaoyan.mall.mapper.systemMapper.AdminLogMapper">
-    <!--<resultMap id="BaseResultMap" type="com.cskaoyan.mall.bean.system.Log">
+    <resultMap id="BaseResultMap" type="com.cskaoyan.mall.bean.system.Log">
         <result column="id"  property="id" />
         <result column="admin"  property="admin" />
         <result column="action"  property="action" />
@@ -13,23 +13,19 @@
         <result column="type"  property="type" />
         <result column="update_time"  property="updateTime" />
         <result column="ip"  property="ip" />
-    </resultMap>-->
+    </resultMap>
 
-    <select id="find" resultType="com.cskaoyan.mall.bean.system.Log">
+    <sql id="BaseColumnList">
+        `action` ,add_time,`admin`,comment,deleted,id,ip,result,status,`type`,update_time
+    </sql>
+
+    <select id="find" resultMap="BaseResultMap">
         select
-            `action`,
-            add_time,
-            `admin`,
-            `comment`,
-            deleted,
-            id,
-            ip,
-            result,
-            `status`,
-            `type`,
-            update_time
+           <include refid="BaseColumnList"/>
         from
             cskaoyan_mall_log
-        order by add_time desc
+        where
+            `admin` like concat('%', #{name}, '%')
+        order by #{add_time} #{desc}
     </select>
 </mapper>

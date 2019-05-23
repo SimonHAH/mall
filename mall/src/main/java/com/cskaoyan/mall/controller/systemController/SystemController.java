@@ -24,21 +24,16 @@ public class SystemController {
     @Autowired
     AdminLogService adminLogService;
 
-    /*@GetMapping("/admin/list")
-    public Object list(int page, int limit, String sort, String order) {
-        List<AdminRole> adminList = adminLogService.querySelect(page, limit, sort, order);
-
-
-        return ResponseUtil.okList(adminList);
-    }*/
 
     @RequestMapping("/log/list")
     @ResponseBody
-    public CommonResult getList(@RequestParam(defaultValue = "1") Integer page,
+    public CommonResult getList(String name, @RequestParam(defaultValue = "1") Integer page,
                                 @RequestParam(defaultValue = "10") Integer limit, String sort, String order) {
-        CommonResult commonResult = adminLogService.getList(page, limit, sort, order);
+        CommonResult commonResult = adminLogService.getList(name, page, limit, sort, order);
         return commonResult;
     }
+
+
 
 
 }

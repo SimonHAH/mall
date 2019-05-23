@@ -3,6 +3,7 @@ package com.cskaoyan.mall.mapper.systemMapper;
 
 import com.cskaoyan.mall.bean.system.Log;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -13,5 +14,5 @@ import java.util.List;
 @Mapper
 public interface AdminLogMapper {
 
-    List<Log> find();
+    List<Log> find(@Param("name") String name, @Param("add_time") String sort, @Param("desc") String desc);
 }

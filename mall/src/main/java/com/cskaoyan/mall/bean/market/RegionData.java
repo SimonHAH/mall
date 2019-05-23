@@ -8,4 +8,5 @@ public class RegionData {
     private Integer id;
     private String name;
     private Integer type;
+    private RegionData[] children;
 }

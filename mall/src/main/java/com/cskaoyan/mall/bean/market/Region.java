@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Region {
-    private RegionData[][][] regionData;
+    private RegionData[] data;
     private String errmsg;
     private Integer errno;
 }

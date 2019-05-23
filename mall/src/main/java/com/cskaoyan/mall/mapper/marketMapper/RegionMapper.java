@@ -1,4 +1,7 @@
 package com.cskaoyan.mall.mapper.marketMapper;
 
-public class RegionMapper {
+import com.cskaoyan.mall.bean.market.RegionData;
+import java.util.List;
+public interface RegionMapper {
+    List<RegionData> selectProvince();
 }

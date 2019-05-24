@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cskaoyan.mall.mapper.marketMapper.ListSpeciesMapper">
+
+    <resultMap id="cd" type="categoryData">
+        <id column="id" property="id"/>
+        <result column="desc" property="desc"/>
+        <result column="icon_url" property="iconUrl"/>
+        <result column="keywords" property="keywords"/>
+        <result column="level" property="level"/>
+        <result column="name" property="name"/>
+        <result column="pic_url" property="picUrl"/>
+        <collection column="id" property="children" select="queryChildCategory"/>
+    </resultMap>
+
+    <select id="queryChildCategory" resultMap="cd">
+        select *from cskaoyan_mall_category where pid = #{id};
+    </select>
+
+    <select id="queryAllCategoryData" resultMap="cd">
+        select *from cskaoyan_mall_category where pid = 0;
+    </select>
+
+    <select id="queryAllCategoryName" resultType="l1Data">
+        select id as value,name as label from cskaoyan_mall_category where pid = 0;
+    </select>
+</mapper>

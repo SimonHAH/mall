@@ -5,20 +5,16 @@ import lombok.Data;
 /**
  * @author Nemo
  * @version 1.0
- * @date 2019/5/23
+ * @date 2019/5/24
  */
 @Data
-public class Address {
+public class Footprint {
+
     private int id;
-    private String name;
     private int userId;
-    private int provinceId;
-    private int cityId;
-    private int areaId;
-    private String address;
-    private String mobile;
-    private int isDefault;
+    private int goodsId;
     private String addTime;
     private String updateTime;
     private Boolean deleted;
+
 }

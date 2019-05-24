@@ -1,7 +1,6 @@
 package com.cskaoyan.mall.bean.user;
 
 import lombok.Data;
-import java.sql.Date;
 
 /**
  * @author Nemo
@@ -14,8 +13,8 @@ public class User {
     private String username;
     private String password;
     private int gender;
-    private Date birthday;
-    private Date lastLoginTime;
+    private String birthday;
+    private String lastLoginTime;
     private String lastLoginIp;
     private int userLevel;
     private String nickname;
@@ -23,7 +22,7 @@ public class User {
     private String avatar;
     private String weixinOpenId;
     private int status;
-    private Date addTime;
-    private Date updateTime;
-    private int deleted;
+    private String addTime;
+    private String updateTime;
+    private Boolean deleted;
 }

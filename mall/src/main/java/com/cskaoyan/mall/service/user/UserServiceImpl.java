@@ -35,9 +35,10 @@ public class UserServiceImpl implements UserService {
 
         List<User> list = userMapper.getList(sort, order, username, mobile);
 
-        // 取记录总条数
+        /*// 取记录总条数
         PageInfo<User> pageInfo = new PageInfo<>();
-        long total = pageInfo.getTotal();
+        long total = pageInfo.getTotal();*/
+        long total = list.size();
 
         CommonData<User> commonData = new CommonData<>();
         commonData.setItems(list);

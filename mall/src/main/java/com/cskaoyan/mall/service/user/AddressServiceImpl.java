@@ -29,8 +29,9 @@ public class AddressServiceImpl implements AddressService {
 
         List<AddressVO> list = addressMapper.getList(sort, order);
 
-        PageInfo<AddressVO> pageInfo = new PageInfo<>();
-        long total = pageInfo.getTotal();
+        /*PageInfo<AddressVO> pageInfo = new PageInfo<>();
+        long total = pageInfo.getTotal();*/
+        long total = list.size();
 
         CommonData<AddressVO> commonData = new CommonData<>();
         commonData.setTotal(total);

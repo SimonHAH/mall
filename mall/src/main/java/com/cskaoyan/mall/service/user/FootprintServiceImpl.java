@@ -2,10 +2,9 @@ package com.cskaoyan.mall.service.user;
 
 import com.cskaoyan.mall.bean.common.CommonData;
 import com.cskaoyan.mall.bean.common.CommonResult;
-import com.cskaoyan.mall.bean.user.Collect;
-import com.cskaoyan.mall.mapper.user.CollectMapper;
+import com.cskaoyan.mall.bean.user.Footprint;
+import com.cskaoyan.mall.mapper.user.FootprintMapper;
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,37 +16,36 @@ import java.util.List;
  * @date 2019/5/24
  */
 @Service
-public class CollectServiceImpl implements CollectService {
+public class FootprintServiceImpl implements FootprintService {
+
 
     @Autowired
-    CollectMapper collectMapper;
+    FootprintMapper footprintMapper;
 
     @Override
-    public CommonResult getList(int page, int limit, String userId, String valueId, String sort, String order) {
+    public CommonResult getList(int page, int limit, String userId, String goodsId, String sort, String order) {
 
         PageHelper.startPage(page, limit);
 
         if (userId == null) {
             userId = "";
         }
-        if (valueId == null) {
-            valueId = "";
+        if (goodsId == null) {
+            goodsId = "";
         }
 
-        List<Collect> list = collectMapper.getList(userId, valueId, sort, order);
+        List<Footprint> list = footprintMapper.getList(userId, goodsId, sort, order);
 
-        /*PageInfo<Collect> pageInfo = new PageInfo<>();
-        long total = pageInfo.getTotal();*/
         long total = list.size();
 
-        CommonData<Collect> commonData = new CommonData<>();
-        commonData.setItems(list);
+        CommonData<Footprint> commonData = new CommonData<>();
         commonData.setTotal(total);
+        commonData.setItems(list);
 
         CommonResult commonResult = new CommonResult();
         commonResult.setData(commonData);
-        commonResult.setErrmsg("成功");
         commonResult.setErrno(0);
+        commonResult.setErrmsg("成功");
 
         return commonResult;
     }

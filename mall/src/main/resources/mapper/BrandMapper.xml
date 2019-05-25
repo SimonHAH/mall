@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cskaoyan.mall.mapper.marketMapper.BrandMapper">
-    <resultMap id="bi" type="brandItem">
-        <id column="id" property="id"/>
-        <result column="name" property="name"/>
-        <result column="desc" property="desc"/>
-        <result column="pic_url" property="picUrl"/>
-        <result column="sort_order" property="sortOrder"/>
-        <result column="floor_price" property="floorPrice"/>
-        <result column="add_time" property="addTime"/>
-        <result column="update_time" property="updateTime"/>
-        <result column="deleted" property="deleted"/>
-    </resultMap>
+    <!--映射表-->
+    <!--<resultMap id="bi" type="brandItem">-->
+        <!--<id column="id" property="id"/>-->
+        <!--<result column="name" property="name"/>-->
+        <!--<result column="desc" property="desc"/>-->
+        <!--<result column="pic_url" property="picUrl"/>-->
+        <!--<result column="sort_order" property="sortOrder"/>-->
+        <!--<result column="floor_price" property="floorPrice"/>-->
+        <!--<result column="add_time" property="addTime"/>-->
+        <!--<result column="update_time" property="updateTime"/>-->
+        <!--<result column="deleted" property="deleted"/>-->
+    <!--</resultMap>-->
 
+    <!--公共sql语句-->
     <sql id="sortBy">
         order by #{sort} #{order}
     </sql>
-    <select id="queryAllBrand" resultMap="bi">
-        SELECT *FROM cskaoyan_mall_brand <include refid="sortBy"/>
-    </select>
-    <!--按照品牌名关键字去查找-->
-    <select id="queryBrandByConditions" resultMap="bi">
-        SELECT *FROM cskaoyan_mall_brand
+    <sql id="selectBy">
         <where>
             <if test="name!=null">
                 name like "%${name}%"
@@ -30,10 +27,22 @@
                 and id = #{id}
             </if>
         </where>
+    </sql>
+    <!--查找所有品牌-->
+    <select id="queryAllBrand" resultType="brandItem">
+        SELECT *FROM cskaoyan_mall_brand <include refid="sortBy"/>
+    </select>
 
-        <include refid="sortBy"/>;
+    <!--按照品牌名关键字去查找-->
+    <select id="queryBrandByConditions" resultType="brandItem">
+        SELECT *FROM cskaoyan_mall_brand
+        <include refid="selectBy"/>
+        <include refid="sortBy"/>
     </select>
-    <select id="count" resultType="java.lang.Integer">
-        select count(*) from cskaoyan_mall_brand;
+    <!--搜索满足条件的商品的总数-->
+    <select id="countByConditions" resultType="java.lang.Integer">
+        select count(*) from cskaoyan_mall_brand
+        <include refid="selectBy"/>
     </select>
+
 </mapper>

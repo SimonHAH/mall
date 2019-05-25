@@ -1,13 +1,13 @@
 package com.cskaoyan.mall.service.marketService;
 
-import com.cskaoyan.mall.bean.market.specialData.IssueData;
+import com.cskaoyan.mall.bean.market.commonData.MyCommonResult;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 public interface GeneralIssueService {
-    List<IssueData> queryAllIssue();
+    MyCommonResult queryAllIssue();
 
-    List<IssueData> queryIssueByName(String question);
+    MyCommonResult queryIssueByName(String question);
 
-    List<IssueData> insertIssue(IssueData issueData);
+    MyCommonResult insertIssue(HttpServletRequest res);
 }

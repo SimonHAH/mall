@@ -1,9 +1,7 @@
 package com.cskaoyan.mall.service.marketService;
 
-import com.cskaoyan.mall.bean.market.specialData.RegionData;
-
-import java.util.List;
+import com.cskaoyan.mall.bean.market.commonData.MyCommonsResult;
 
 public interface RegionService {
-    List<RegionData> selectProvince();
+    MyCommonsResult selectProvince();
 }

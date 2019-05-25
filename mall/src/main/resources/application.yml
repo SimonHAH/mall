@@ -10,11 +10,12 @@ mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml
   configuration:
     aggressive-lazy-loading: false
+    map-underscore-to-camel-case: true
 
 #生成sql语句执行的debug日志
 logging:
   level:
-    com.cskaoyan.mall.mapper: debug
+    com.cskaoyan.mall.mapper: trace
 
 #pageHelper配置
 pagehelper:

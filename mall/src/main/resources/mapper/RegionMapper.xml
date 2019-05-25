@@ -7,7 +7,7 @@
         <result property="name" column="name"/>
         <result property="type" column="type"/>
         <result property="code" column="code"/>
-        <collection property="children" ofType="regionData"  column="id" select="queryChild"/>
+        <collection property="children"  column="{selectId=id}"  select="queryChild"/>
     </resultMap>
 
     <select id="selectProvince" resultMap="regionDataResult">
@@ -16,9 +16,9 @@
         WHERE pid = 0;
     </select>
 
-    <select id="queryChild" resultMap="regionDataResult" parameterType="java.lang.Integer">
+    <select id="queryChild" resultMap="regionDataResult">
         select id,name,type,code
         from cskaoyan_mall_region
-        where pid = #{id};
+        where pid = #{selectId};
     </select>
 </mapper>

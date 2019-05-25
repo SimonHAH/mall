@@ -31,10 +31,11 @@ public class FeedbackServiceImpl implements FeedbackService {
         }
 
         List<Feedback> list = feedbackMapper.getList(username, id, sort, order);
+        int total = feedbackMapper.getTotal(username, id);
 
         CommonData<Feedback> commonData = new CommonData<>();
         commonData.setItems(list);
-        commonData.setTotal(list.size());
+        commonData.setTotal(total);
 
         CommonResult commonResult = new CommonResult();
         commonResult.setData(commonData);

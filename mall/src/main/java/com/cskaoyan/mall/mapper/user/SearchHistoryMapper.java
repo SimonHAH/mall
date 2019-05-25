@@ -13,4 +13,7 @@ import java.util.List;
 @Mapper
 public interface SearchHistoryMapper {
     List<SearchHistory> getList(String sort, String order, String userId, String keyword);
+
+    int getTotal(String userId, String keyword);
+
 }

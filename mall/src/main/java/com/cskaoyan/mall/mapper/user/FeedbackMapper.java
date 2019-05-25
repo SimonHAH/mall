@@ -13,4 +13,6 @@ import java.util.List;
 @Mapper
 public interface FeedbackMapper {
     List<Feedback> getList(String username, String id, String sort, String order);
+
+    int getTotal(String username, String id);
 }

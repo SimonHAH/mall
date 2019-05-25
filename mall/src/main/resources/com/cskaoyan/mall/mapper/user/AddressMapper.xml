@@ -2,10 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.cskaoyan.mall.mapper.user.AddressMapper">
+    <resultMap id="BaseResultMap" type="com.cskaoyan.mall.bean.user.Address">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="user_id" property="userId"/>
+        <result column="province_id" property="provinceId"/>
+        <result column="city_id" property="cityId"/>
+        <result column="area_id" property="areaId"/>
+        <result column="address" property="address"/>
+        <result column="mobile" property="mobile"/>
+        <result column="is_default" property="isDefault"/>
+        <result column="add_time" property="addTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
 
-    <select id="getList" resultType="com.cskaoyan.mall.bean.user.AddressVO">
+    <sql id="BaseColumnList">
+        id, name, user_id, province_id, city_id, area_id, address,
+        mobile, is_default, add_time, update_time, deleted
+    </sql>
 
+    <select id="getList" resultMap="BaseResultMap">
+        select <include refid="BaseColumnList"/>
+        from cskaoyan_mall_address
+        where name like concat ("%" #{name} "%")
+          and user_id like concat ("%" #{userId} "%")
     </select>
 
-
+    <select id="getTotal" resultType="_int">
+        select count(*)
+        from cskaoyan_mall_address
+        where name like concat ("%" #{name} "%")
+          and user_id like concat ("%" #{userId} "%")
+    </select>
 </mapper>

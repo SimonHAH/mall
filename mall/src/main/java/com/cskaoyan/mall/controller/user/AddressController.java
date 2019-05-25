@@ -21,7 +21,7 @@ public class AddressController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public CommonResult getList(int page, int limit, String sort, String order) {
-        return addressService.getList(page, limit, sort, order);
+    public CommonResult getList(int page, int limit, String sort, String order, String name, String userId) {
+        return addressService.getList(page, limit, sort, order, name, userId);
     }
 }

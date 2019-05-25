@@ -4,6 +4,7 @@ import com.cskaoyan.mall.bean.common.CommonData;
 import com.cskaoyan.mall.bean.common.CommonResult;
 import com.cskaoyan.mall.bean.user.SearchHistory;
 import com.cskaoyan.mall.mapper.user.SearchHistoryMapper;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,7 @@ public class SearchHistoryServiceImpl implements SearchHistoryService {
 
     @Override
     public CommonResult getList(int page, int limit, String sort, String order, String userId, String keyword) {
+        PageHelper.startPage(page, limit);
 
         if (userId == null) {
             userId = "";

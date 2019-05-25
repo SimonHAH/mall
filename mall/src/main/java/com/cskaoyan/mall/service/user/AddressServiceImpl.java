@@ -23,15 +23,22 @@ public class AddressServiceImpl implements AddressService {
     AddressMapper addressMapper;
 
     @Override
-    public CommonResult getList(int page, int limit, String sort, String order) {
+    public CommonResult getList(int page, int limit, String sort, String order, String name, String userId) {
 
-        // PageHelper.startPage(page, limit);
+        PageHelper.startPage(page, limit);
 
-        List<AddressVO> list = addressMapper.getList(sort, order);
+        if (name == null) {
+            name = "";
+        }
+        if (userId == null) {
+            userId = "";
+        }
+
+        List<AddressVO> list = addressMapper.getList(sort, order, name, userId);
 
         /*PageInfo<AddressVO> pageInfo = new PageInfo<>();
         long total = pageInfo.getTotal();*/
-        long total = list.size();
+        int total = addressMapper.getTotal(name, userId);
 
         CommonData<AddressVO> commonData = new CommonData<>();
         commonData.setTotal(total);
@@ -43,6 +50,6 @@ public class AddressServiceImpl implements AddressService {
         commonResult.setErrmsg("成功");
 
 
-        return null;
+        return commonResult;
     }
 }

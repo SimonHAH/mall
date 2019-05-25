@@ -25,6 +25,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public CommonResult getList(Integer page, Integer limit, String sort, String order, String username, String mobile) {
 
+        PageHelper.startPage(page, limit);
+
         if (username == null) {
             username = "";
         }

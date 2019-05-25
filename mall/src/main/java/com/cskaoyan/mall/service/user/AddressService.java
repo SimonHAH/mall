@@ -8,5 +8,5 @@ import com.cskaoyan.mall.bean.common.CommonResult;
  * @date 2019/5/23
  */
 public interface AddressService {
-    CommonResult getList(int page, int limit, String sort, String order);
+    CommonResult getList(int page, int limit, String sort, String order, String name, String userId);
 }

@@ -25,7 +25,7 @@ public class FootprintServiceImpl implements FootprintService {
     @Override
     public CommonResult getList(int page, int limit, String userId, String goodsId, String sort, String order) {
 
-        // PageHelper.startPage(page, limit);
+        PageHelper.startPage(page, limit);
 
         if (userId == null) {
             userId = "";

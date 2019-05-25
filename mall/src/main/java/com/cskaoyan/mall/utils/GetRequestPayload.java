@@ -13,7 +13,7 @@ public class GetRequestPayload {
 
     public static Map getRequestPayload(HttpServletRequest req){
         StringBuilder sb = new StringBuilder();
-        try(BufferedReader reader = req.getReader();) {
+        try(BufferedReader reader = req.getReader()) {
             char[]buff = new char[1024];
             int len;
             while((len = reader.read(buff)) != -1) {

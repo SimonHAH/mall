@@ -25,7 +25,7 @@ public class CollectServiceImpl implements CollectService {
     @Override
     public CommonResult getList(int page, int limit, String userId, String valueId, String sort, String order) {
 
-        // PageHelper.startPage(page, limit);
+        PageHelper.startPage(page, limit);
 
         if (userId == null) {
             userId = "";

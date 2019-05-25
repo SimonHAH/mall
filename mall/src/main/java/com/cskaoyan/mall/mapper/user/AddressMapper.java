@@ -15,6 +15,7 @@ import java.util.List;
 public interface AddressMapper {
 
 
-    List<AddressVO> getList(String sort, String order);
+    List<AddressVO> getList(String sort, String order, String name, String userId);
 
+    int getTotal(String name, String userId);
 }

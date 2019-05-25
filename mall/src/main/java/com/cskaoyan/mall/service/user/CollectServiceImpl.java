@@ -38,7 +38,7 @@ public class CollectServiceImpl implements CollectService {
 
         /*PageInfo<Collect> pageInfo = new PageInfo<>();
         long total = pageInfo.getTotal();*/
-        long total = list.size();
+        int total = collectMapper.getTotal(userId, valueId);
 
         CommonData<Collect> commonData = new CommonData<>();
         commonData.setItems(list);

@@ -2,10 +2,8 @@ package com.cskaoyan.mall.service.user;
 
 import com.cskaoyan.mall.bean.common.CommonData;
 import com.cskaoyan.mall.bean.common.CommonResult;
-import com.cskaoyan.mall.bean.user.User;
-import com.cskaoyan.mall.mapper.user.UserMapper;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+import com.cskaoyan.mall.bean.user.Feedback;
+import com.cskaoyan.mall.mapper.user.FeedbackMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,29 +12,28 @@ import java.util.List;
 /**
  * @author Nemo
  * @version 1.0
- * @date 2019/5/23
+ * @date 2019/5/25
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class FeedbackServiceImpl implements FeedbackService {
 
     @Autowired
-    UserMapper userMapper;
+    FeedbackMapper feedbackMapper;
 
     @Override
-    public CommonResult getList(Integer page, Integer limit, String sort, String order, String username, String mobile) {
+    public CommonResult getList(int page, int limit, String username, String id, String sort, String order) {
 
         if (username == null) {
             username = "";
         }
-        if (mobile == null) {
-            mobile = "";
+        if (id == null) {
+            id = "";
         }
 
-        List<User> list = userMapper.getList((page-1) * limit, limit, sort, order, username, mobile);
+        List<Feedback> list = feedbackMapper.getList(username, id, sort, order);
+        int total = feedbackMapper.getTotal(username, id);
 
-        int total = userMapper.getTotal(username, mobile);
-
-        CommonData<User> commonData = new CommonData<>();
+        CommonData<Feedback> commonData = new CommonData<>();
         commonData.setItems(list);
         commonData.setTotal(total);
 

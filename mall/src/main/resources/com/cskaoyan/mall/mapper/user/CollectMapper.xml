@@ -26,4 +26,11 @@
         order by #{sort} #{order}
     </select>
 
+    <select id="getTotal" resultType="_int">
+        select count(*)
+        from cskaoyan_mall_collect
+        where user_id like concat ("%" #{userId} "%")
+          and value_id like concat ("%" #{valueId} "%")
+    </select>
+
 </mapper>

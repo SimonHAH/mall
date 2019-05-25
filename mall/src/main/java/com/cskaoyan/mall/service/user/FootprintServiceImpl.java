@@ -36,7 +36,7 @@ public class FootprintServiceImpl implements FootprintService {
 
         List<Footprint> list = footprintMapper.getList(userId, goodsId, sort, order);
 
-        long total = list.size();
+        int total = footprintMapper.getTotal(userId, goodsId);
 
         CommonData<Footprint> commonData = new CommonData<>();
         commonData.setTotal(total);

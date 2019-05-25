@@ -14,5 +14,5 @@ import java.util.List;
 public interface CollectMapper {
     List<Collect> getList(String userId, String valueId, String sort, String order);
 
-
+    int getTotal(String userId, String valueId);
 }

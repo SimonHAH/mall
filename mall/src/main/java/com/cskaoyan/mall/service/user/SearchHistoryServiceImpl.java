@@ -31,9 +31,10 @@ public class SearchHistoryServiceImpl implements SearchHistoryService {
         }
 
         List<SearchHistory> list = searchHistoryMapper.getList(sort, order, userId, keyword);
+        int total = searchHistoryMapper.getTotal(userId, keyword);
 
         CommonData<SearchHistory> commonData = new CommonData<>();
-        commonData.setTotal(list.size());
+        commonData.setTotal(total);
         commonData.setItems(list);
 
         CommonResult commonResult = new CommonResult();

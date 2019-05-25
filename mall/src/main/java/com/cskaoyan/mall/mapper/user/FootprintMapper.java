@@ -14,4 +14,6 @@ import java.util.List;
 public interface FootprintMapper {
     List<Footprint> getList(String userId, String goodsId, String sort, String order);
 
+    int getTotal(String userId, String goodsId);
+
 }

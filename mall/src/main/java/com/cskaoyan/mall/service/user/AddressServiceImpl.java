@@ -25,7 +25,7 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public CommonResult getList(int page, int limit, String sort, String order) {
 
-        PageHelper.startPage(page, limit);
+        // PageHelper.startPage(page, limit);
 
         List<AddressVO> list = addressMapper.getList(sort, order);
 

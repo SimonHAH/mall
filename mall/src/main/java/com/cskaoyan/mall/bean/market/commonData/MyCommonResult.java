@@ -2,8 +2,12 @@ package com.cskaoyan.mall.bean.market.commonData;
 
 import lombok.Data;
 
+/**
+ * 单数据 返回值模板
+ * @param <T>
+ */
 @Data
-public class MyCommonData<T> {
+public class MyCommonResult<T> {
     private T data;
     private String errmsg;
     private Integer errno;

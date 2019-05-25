@@ -1,7 +1,7 @@
 package com.cskaoyan.mall.service.marketService;
 
 
-import com.cskaoyan.mall.bean.market.Order;
+import com.cskaoyan.mall.bean.market.specialData.Order;
 
 import java.util.List;
 

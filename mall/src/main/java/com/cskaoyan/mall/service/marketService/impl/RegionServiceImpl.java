@@ -1,6 +1,6 @@
 package com.cskaoyan.mall.service.marketService.impl;
 
-import com.cskaoyan.mall.bean.market.RegionData;
+import com.cskaoyan.mall.bean.market.specialData.RegionData;
 import com.cskaoyan.mall.mapper.marketMapper.RegionMapper;
 import com.cskaoyan.mall.service.marketService.RegionService;
 import org.springframework.beans.factory.annotation.Autowired;

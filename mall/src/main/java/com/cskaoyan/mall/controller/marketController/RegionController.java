@@ -1,8 +1,7 @@
 package com.cskaoyan.mall.controller.marketController;
 
-
-import com.cskaoyan.mall.bean.market.ReturnRegionData;
-import com.cskaoyan.mall.bean.market.RegionData;
+import com.cskaoyan.mall.bean.market.specialData.RegionData;
+import com.cskaoyan.mall.bean.market.commonData.MyCommonsResult;
 import com.cskaoyan.mall.service.marketService.RegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,14 +18,16 @@ public class RegionController {
 
     @GetMapping(value = "/region/list")
     @ResponseBody
-    public ReturnRegionData list(){
+    public MyCommonsResult list(){
+
         List<RegionData> regionDataList = regionService.selectProvince();
-        ReturnRegionData region = new ReturnRegionData();
-        region.setData(regionDataList.stream().toArray(RegionData[]::new));
 
-        region.setErrmsg("成功");
-        region.setErrno(0);
+        MyCommonsResult<RegionData> commonsResult = new MyCommonsResult<>();
+        commonsResult.setData(regionDataList);
 
-        return region;
+        commonsResult.setErrmsg("成功");
+        commonsResult.setErrno(0);
+
+        return commonsResult;
     }
 }

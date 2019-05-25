@@ -1,10 +1,12 @@
 package com.cskaoyan.mall.service.marketService.impl;
 
-import com.cskaoyan.mall.bean.market.BrandItem;
+import com.cskaoyan.mall.bean.market.specialData.BrandItem;
 import com.cskaoyan.mall.mapper.marketMapper.BrandMapper;
 import com.cskaoyan.mall.service.marketService.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
@@ -13,7 +15,7 @@ public class BrandServiceImpl implements BrandService {
     BrandMapper brandMapper;
 
     @Override
-    public BrandItem[] queryAllBrand() {
+    public List<BrandItem> queryAllBrand() {
         return brandMapper.queryAllBrand();
     }
 
@@ -23,7 +25,7 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
-    public BrandItem[] queryBrandByConditions(String name, String id) {
+    public List<BrandItem> queryBrandByConditions(String name, String id) {
         return brandMapper.queryBrandByConditions(name,id);
     }
 }

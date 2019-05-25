@@ -1,4 +1,4 @@
-package com.cskaoyan.mall.bean.market;
+package com.cskaoyan.mall.bean.market.specialData;
 
 import lombok.Data;
 import tk.mybatis.mapper.annotation.KeySql;

@@ -1,6 +1,6 @@
 package com.cskaoyan.mall.service.marketService;
 
-import com.cskaoyan.mall.bean.market.RegionData;
+import com.cskaoyan.mall.bean.market.specialData.RegionData;
 
 import java.util.List;
 

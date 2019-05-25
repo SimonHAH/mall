@@ -2,9 +2,14 @@ package com.cskaoyan.mall.bean.market.commonData;
 
 import lombok.Data;
 
+import java.util.List;
+
+/**
+ *
+ * @param <T>
+ */
 @Data
 public class MyCommonsData<T> {
-    private T[] data;
-    private String errmsg;
-    private Integer errno;
+    private Integer total;
+    private List<T> items;
 }

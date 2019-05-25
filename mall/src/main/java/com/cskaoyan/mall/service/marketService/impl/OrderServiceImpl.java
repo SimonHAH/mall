@@ -1,6 +1,6 @@
 package com.cskaoyan.mall.service.marketService.impl;
 
-import com.cskaoyan.mall.bean.market.Order;
+import com.cskaoyan.mall.bean.market.specialData.Order;
 import com.cskaoyan.mall.mapper.marketMapper.OrderMapper;
 import com.cskaoyan.mall.service.marketService.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;

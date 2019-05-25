@@ -1,11 +1,13 @@
 package com.cskaoyan.mall.service.marketService;
 
-import com.cskaoyan.mall.bean.market.commonData.CategoryData;
-import com.cskaoyan.mall.bean.market.commonData.L1Data;
+import com.cskaoyan.mall.bean.market.specialData.CategoryData;
+import com.cskaoyan.mall.bean.market.specialData.L1Data;
+
+import java.util.List;
 
 public interface ListSpeciesService {
 
-    CategoryData[] queryAllCategoryData();
+    List<CategoryData> queryAllCategoryData();
 
     L1Data[] queryAllCategoryName();
 }

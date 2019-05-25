@@ -12,5 +12,7 @@ import java.util.List;
  */
 @Mapper
 public interface UserMapper {
-    List<User> getList(String sort, String order, String username, String mobile);
+    List<User> getList(Integer page, Integer limit, String sort, String order, String username, String mobile);
+
+    int getTotal(String username, String mobile);
 }

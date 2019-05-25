@@ -32,6 +32,12 @@
         from cskaoyan_mall_user
         where username like concat ("%", #{username}, "%") and mobile like concat ("%", #{mobile}, "%")
         order by #{sort} #{order}
+        limit #{page}, #{limit}
+    </select>
+
+    <select id="getTotal" resultType="_int">
+        select count(*) from cskaoyan_mall_user
+        where username like concat ("%", #{username}, "%") and mobile like concat ("%", #{mobile}, "%")
     </select>
 
 </mapper>

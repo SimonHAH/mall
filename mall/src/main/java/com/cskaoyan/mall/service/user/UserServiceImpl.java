@@ -24,7 +24,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public CommonResult getList(Integer page, Integer limit, String sort, String order, String username, String mobile) {
-        // PageHelper.startPage(page, limit);
 
         if (username == null) {
             username = "";
@@ -33,12 +32,9 @@ public class UserServiceImpl implements UserService {
             mobile = "";
         }
 
-        List<User> list = userMapper.getList(sort, order, username, mobile);
+        List<User> list = userMapper.getList((page-1) * limit, limit, sort, order, username, mobile);
 
-        /*// 取记录总条数
-        PageInfo<User> pageInfo = new PageInfo<>();
-        long total = pageInfo.getTotal();*/
-        long total = list.size();
+        int total = userMapper.getTotal(username, mobile);
 
         CommonData<User> commonData = new CommonData<>();
         commonData.setItems(list);

@@ -1,15 +1,11 @@
 package com.cskaoyan.mall.service.marketService;
 
-import com.cskaoyan.mall.bean.market.specialData.BrandItem;
-
-import java.util.List;
+import com.cskaoyan.mall.bean.market.commonData.MyCommonResult;
 
 
 public interface BrandService {
 
-    List<BrandItem> queryAllBrand();
+    MyCommonResult queryAllBrand(Integer page, Integer limit,String sort,String order);
 
-    Integer queryRecords();
-
-    List<BrandItem> queryBrandByConditions(String name, String id);
+    MyCommonResult queryBrandByConditions(String name,String id,Integer page, Integer limit,String sort,String order);
 }

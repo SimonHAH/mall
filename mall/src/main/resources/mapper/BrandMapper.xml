@@ -13,14 +13,12 @@
         <result column="deleted" property="deleted"/>
     </resultMap>
 
+    <sql id="sortBy">
+        order by #{sort} #{order}
+    </sql>
     <select id="queryAllBrand" resultMap="bi">
-        SELECT *FROM cskaoyan_mall_brand;
+        SELECT *FROM cskaoyan_mall_brand <include refid="sortBy"/>
     </select>
-
-    <select id="queryRecords" resultType="java.lang.Integer">
-        select count(1) from cskaoyan_mall_brand;
-    </select>
-
     <!--按照品牌名关键字去查找-->
     <select id="queryBrandByConditions" resultMap="bi">
         SELECT *FROM cskaoyan_mall_brand
@@ -32,6 +30,10 @@
                 and id = #{id}
             </if>
         </where>
-    </select>
 
+        <include refid="sortBy"/>;
+    </select>
+    <select id="count" resultType="java.lang.Integer">
+        select count(*) from cskaoyan_mall_brand;
+    </select>
 </mapper>

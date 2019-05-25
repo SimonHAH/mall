@@ -8,8 +8,17 @@ server:
 mybatis:
   type-aliases-package: com.cskaoyan.mall.bean
   mapper-locations: classpath:mapper/*Mapper.xml
+  configuration:
+    aggressive-lazy-loading: false
 
 #生成sql语句执行的debug日志
 logging:
   level:
     com.cskaoyan.mall.mapper: debug
+
+#pageHelper配置
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

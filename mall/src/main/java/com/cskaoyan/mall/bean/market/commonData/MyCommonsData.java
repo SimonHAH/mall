@@ -10,6 +10,6 @@ import java.util.List;
  */
 @Data
 public class MyCommonsData<T> {
-    private Integer total;
+    private long total;
     private List<T> items;
 }

@@ -1,13 +1,16 @@
 package com.cskaoyan.mall.mapper.marketMapper;
 import com.cskaoyan.mall.bean.market.specialData.BrandItem;
+import org.apache.ibatis.annotations.Param;
+import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
 
-public interface BrandMapper {
+public interface BrandMapper extends Mapper<BrandItem> {
 
-    List<BrandItem> queryAllBrand();
+    int count();
 
-    Integer queryRecords();
+    List<BrandItem> queryAllBrand(@Param("sort") String sort,@Param("order") String order);
 
-    List<BrandItem> queryBrandByConditions(String name, String id);
+    List<BrandItem> queryBrandByConditions(@Param("name")String name,@Param("id")String id,
+                                           @Param("sort")String sort,@Param("order")String order);
 }

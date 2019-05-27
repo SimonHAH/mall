@@ -1,4 +1,4 @@
-package com.cskaoyan.mall.bean.login.dashboard;
+package com.cskaoyan.wx.bean.login.dashboard;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class DashboardParam {
-    private DashboardData data;
+    private DashboardData dashboardData;
     private String errmsg;
     private Integer errno;
 }

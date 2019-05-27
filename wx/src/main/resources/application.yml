@@ -1,0 +1,25 @@
+server:
+  port: 80
+  servlet:
+    context-path: /wx
+
+#将mybatis集成到spring
+#bean文件和mapper扫描
+mybatis:
+  type-aliases-package: com.cskaoyan.mall.bean
+  mapper-locations: classpath:mapper/*Mapper.xml
+  configuration:
+    aggressive-lazy-loading: false
+    map-underscore-to-camel-case: true
+
+#生成sql语句执行的debug日志
+logging:
+  level:
+    com.cskaoyan.mall.mapper: trace
+
+#pageHelper配置
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

@@ -1,4 +1,4 @@
-package com.cskaoyan.mall.bean.login.login;
+package com.cskaoyan.wx.bean.login.login;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

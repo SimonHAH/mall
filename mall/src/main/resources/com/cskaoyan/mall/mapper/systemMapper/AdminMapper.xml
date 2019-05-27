@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cskaoyan.mall.mapper.systemMapper.AdminMapper">
+    <resultMap id="RoleResultMap" type="com.cskaoyan.mall.bean.system.AdminRole">
+        <result column="id"  property="value" />
+        <result column="name"  property="label" />
+    </resultMap>
+
+    <sql id="RoleColumnList">
+        id,name
+    </sql>
+
+    <select id="findAdminRole" resultMap="RoleResultMap">
+        select
+           <include refid="RoleColumnList"/>
+        from
+            cskaoyan_mall_role
+    </select>
+
+    <resultMap id="AdminResultMap" type="com.cskaoyan.mall.bean.system.Admin">
+        <result column="id"  property="id" />
+        <result column="username"  property="username" />
+        <result column="avatar"  property="avatar" />
+        <result column="role_ids"  property="roleIds" typeHandler="com.cskaoyan.mall.handler.StringToArrayHandler"/>
+    </resultMap>
+
+    <sql id="AdminColumnList">
+        id,username,avatar,role_ids
+    </sql>
+
+    <select id="findAdmins" resultMap="AdminResultMap">
+        select
+        <include refid="AdminColumnList"/>
+        from
+        cskaoyan_mall_admin
+        order by #{add_time} #{desc}
+    </select>
+</mapper>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cskaoyan.mall.mapper.configuration.MallConfigMapper">
+    <resultMap id="BaseResultMap" type="com.cskaoyan.mall.bean.configuration.MallConfig">
+        <result column="cskaoyan_mall_mall_name" property="litemall_mall_name"/>
+        <result column="cskaoyan_mall_mall_address" property="litemall_mall_address"/>
+        <result column="cskaoyan_mall_mall_phone" property="litemall_mall_phone"/>
+        <result column="cskaoyan_mall_mall_qq" property="litemall_mall_qq"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        cskaoyan_mall_mall_name,cskaoyan_mall_mall_address,cskaoyan_mall_mall_phone,cskaoyan_mall_mall_qq
+    </sql>
+
+    <update id="updateMallConfig">
+        update cskaoyan_mall_system set
+        key_value = #{mallConfig.litemall_mall_name}
+        where key_name = 'cskaoyan_mall_mall_name';
+
+        update cskaoyan_mall_system set
+        key_value = #{mallConfig.litemall_mall_address}
+        where key_name = 'cskaoyan_mall_mall_address';
+
+        update cskaoyan_mall_system set
+        key_value = #{mallConfig.litemall_mall_phone}
+        where key_name = 'cskaoyan_mall_mall_phone';
+
+        update cskaoyan_mall_system set
+        key_value = #{mallConfig.litemall_mall_qq}
+        where key_name = 'cskaoyan_mall_mall_qq';
+    </update>
+
+    <select id="findMallName" resultType="String">
+        select
+        key_value
+        from cskaoyan_mall_system where key_name = 'cskaoyan_mall_mall_name'
+    </select>
+    <select id="findMallAddress" resultType="String">
+        select
+        key_value
+        from cskaoyan_mall_system where key_name = 'cskaoyan_mall_mall_address'
+    </select>
+    <select id="findMallPhone" resultType="String">
+        select
+        key_value
+        from cskaoyan_mall_system where key_name = 'cskaoyan_mall_mall_phone'
+    </select>
+    <select id="findMallQQ" resultType="String">
+        select
+        key_value
+        from cskaoyan_mall_system where key_name = 'cskaoyan_mall_mall_qq'
+    </select>
+
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cskaoyan.mall.mapper.LoginMapper">
+
+    <select id="findRoleById" resultType="string">
+        select name from cskaoyan_mall_role where id = #{role_id};
+    </select>
+    <select id="findPermissionByRoleId" resultType="string">
+        select permission from cskaoyan_mall_permission where  role_id = #{role_id};
+    </select>
+
+    <select id="findCountByTableName" resultType="integer">
+        select count(*) from ${tableName}
+    </select>
+</mapper>

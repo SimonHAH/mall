@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class AdminLoginParam {
+public class UserRolesAndPermissions {
     private Integer errno;
     private MyData data;
     private String errmsg;

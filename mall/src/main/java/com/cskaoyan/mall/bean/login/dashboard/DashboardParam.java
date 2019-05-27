@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class DashboardParam {
-    private DashboardData dashboardData;
+    private DashboardData data;
     private String errmsg;
     private Integer errno;
 }

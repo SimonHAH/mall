@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cskaoyan.mall.mapper.systemMapper.RoleMapper">
+    <resultMap id="RoleResultMap" type="com.cskaoyan.mall.bean.system.AdRole">
+        <result column="id"  property="id" />
+        <result column="name"  property="name" />
+        <result column="desc"  property="desc" />
+        <result column="add_time"  property="addTime" />
+        <result column="update_time"  property="updateTime" />
+        <result column="enabled"  property="enabled" typeHandler="com.cskaoyan.mall.handler.IntToBooleanHandler"/>
+        <result column="deleted"  property="deleted" typeHandler="com.cskaoyan.mall.handler.IntToBooleanHandler"/>
+    </resultMap>
+
+    <sql id="RoleColumnList">
+        id,name,`desc`,enabled,deleted,add_time,update_time
+    </sql>
+
+
+    <insert id="create">
+        insert into cskaoyan_mall_role
+        (<include refid="RoleColumnList"/>)
+        values (null,#{name},#{desc},1,0,now(),now())
+    </insert>
+
+    <update id="update">
+        update cskaoyan_mall_role set name=#{name},`desc`=#{desc},update_time=now()
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from cskaoyan_mall_role
+        where name = #{name}
+    </delete>
+
+    <select id="findRole" resultMap="RoleResultMap">
+        select
+           <include refid="RoleColumnList"/>
+        from
+            cskaoyan_mall_role
+        where
+        name like concat('%', #{name}, '%')
+        order by #{add_time} #{desc}
+    </select>
+
+    <select id="findRoleByName" resultMap="RoleResultMap">
+        select
+        <include refid="RoleColumnList"/>
+        from
+        cskaoyan_mall_role
+        where
+        name = #{name}
+    </select>
+
+
+</mapper>

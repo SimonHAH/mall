@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cskaoyan.mall.mapper.marketMapper.RegionMapper">
+
+    <resultMap id="regionDataResult" type="regionData">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="type" column="type"/>
+        <result property="code" column="code"/>
+        <collection property="children" ofType="regionData"  column="id" select="queryChild"/>
+    </resultMap>
+
+    <select id="selectProvince" resultMap="regionDataResult">
+        SELECT id,NAME,TYPE,CODE
+        FROM cskaoyan_mall_region
+        WHERE pid = 0;
+    </select>
+
+    <select id="queryChild" resultMap="regionDataResult" parameterType="java.lang.Integer">
+        select id,name,type,code
+        from cskaoyan_mall_region
+        where pid = #{id};
+    </select>
+</mapper>

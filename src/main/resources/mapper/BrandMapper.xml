@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cskaoyan.mall.mapper.marketMapper.BrandMapper">
+    <resultMap id="bi" type="brandItem">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="desc" property="desc"/>
+        <result column="pic_url" property="picUrl"/>
+        <result column="sort_order" property="sortOrder"/>
+        <result column="floor_price" property="floorPrice"/>
+        <result column="add_time" property="addTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <select id="queryAllBrand" resultMap="bi">
+        SELECT *FROM cskaoyan_mall_brand;
+    </select>
+
+    <select id="queryRecords" resultType="java.lang.Integer">
+        select count(1) from cskaoyan_mall_brand;
+    </select>
+
+    <!--按照品牌名关键字去查找-->
+    <select id="queryBrandByConditions" resultMap="bi">
+        SELECT *FROM cskaoyan_mall_brand
+        <where>
+            <if test="name!=null">
+                name like "%${name}%"
+            </if>
+            <if test="id!=null">
+                and id = #{id}
+            </if>
+        </where>
+    </select>
+
+</mapper>
